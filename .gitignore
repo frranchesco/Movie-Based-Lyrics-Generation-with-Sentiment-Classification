@@ -1,0 +1,9 @@
+# Ignore the specific large Genius CSV
+# Replace 'genius_data.csv' with the actual name of the file you unzipped
+genius-song-lyrics-with-language-information.csv
+
+# Ignore any leftover zip files to save space
+*.zip
+
+# Safety first: ignore your API key
+kaggle.json
