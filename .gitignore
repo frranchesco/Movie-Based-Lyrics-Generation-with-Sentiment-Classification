@@ -1,6 +1,3 @@
-# Ignore the specific large Genius CSV
-# Replace 'genius_data.csv' with the actual name of the file you unzipped
-genius-song-lyrics-with-language-information.csv
 
 # Ignore any leftover zip files to save space
 *.zip
@@ -11,3 +8,4 @@ kaggle.json
 # Ignore Python virtual environments and caches
 test.venv/
 __pycache__/
+.vscode/
