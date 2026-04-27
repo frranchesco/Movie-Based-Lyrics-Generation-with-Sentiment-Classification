@@ -81,17 +81,28 @@ if movie_query:
                 st.write(f"**Top Emotion:** {emotions[0]['label'].title()} ({emotions[0]['score']:.2f})")
                 st.write(f"**Valence Score:** {valence:.2f}")
 
+            
             # Show the prompt
             st.subheader("⚙️ Generated Prompt for the LLM:")
             st.code(prompt, language="text")
-            
-            # Placeholder for my teammate's final function
+
+            # Final Lyrics
             st.subheader("🎶 Final Lyrics:")
-            st.info("Waiting for the final LLM integration to generate lyrics...")
+            final_song = logic.generate_final_lyrics(prompt)
+            st.write(final_song)
             
-            # WHEN YOUR TEAMMATE IS DONE, REPLACE THE st.info LINE WITH THIS:
-            # final_song = logic.generate_final_lyrics(prompt)
-            # st.write(final_song)
-            
+            # Analyze generated lyrics sentiment
+            lyrics_emotions = logic.classify_top_emotions_full_plot(final_song, emotion_classifier)
+            lyrics_valence = logic.get_weighted_valence(lyrics_emotions)
+            lyrics_main_mood = logic.assign_main_mood(lyrics_valence)
+
+            st.subheader("🎯 Lyrics Sentiment Analysis")
+            st.write(f"Movie Mood: {main_mood}")
+            st.write(f"Lyrics Mood: {lyrics_main_mood}")
+
+            if main_mood == lyrics_main_mood:
+                st.success("Mood Match")
+            else:
+                st.warning("Mood differs")
     else:
         st.error("Movie not found in the TMDB dataset. Try another one!")

@@ -1,4 +1,5 @@
 import pandas as pd
+from openai import OpenAI
 
 # 1. DICTIONARIES & MAPPINGS
 
@@ -277,3 +278,23 @@ Instructions:
 - Structure the output as Verse 1, Chorus, Verse 2, Chorus
 """
     return prompt.strip()
+
+# 6. FINAL LYRIC GENERATOR
+
+OPENAI_API_KEY = ""  # Tester should paste their own OpenAI API key here
+
+def generate_final_lyrics(prompt):
+    """
+    MOCK FUNCTION: Use this until the live presenter 
+    plugs in their paid API Key.
+    """
+    return f"""
+    🎶 [DEMO MODE ACTIVE] 🎶
+    
+    The UI successfully generated this prompt for the AI:
+    ---
+    {prompt[:150]}...
+    ---
+    (The actual song lyrics will appear here during the live demo 
+    once the presenter's OpenAI API Key is added.)
+    """
