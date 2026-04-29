@@ -285,16 +285,17 @@ OPENAI_API_KEY = ""  # Tester should paste their own OpenAI API key here
 
 def generate_final_lyrics(prompt):
     """
-    MOCK FUNCTION: Use this until the live presenter 
-    plugs in their paid API Key.
+    REAL FUNCTION: Calls OpenAI to generate lyrics based on the movie profile.
     """
-    return f"""
-    🎶 [DEMO MODE ACTIVE] 🎶
-    
-    The UI successfully generated this prompt for the AI:
-    ---
-    {prompt[:150]}...
-    ---
-    (The actual song lyrics will appear here during the live demo 
-    once the presenter's OpenAI API Key is added.)
-    """
+    client = OpenAI(api_key=OPENAI_API_KEY) #
+
+    response = client.chat.completions.create(
+        model="gpt-4o-mini", # Standard, cost-effective model
+        messages=[
+            {"role": "system", "content": "You are a creative songwriter."},
+            {"role": "user", "content": prompt}
+        ],
+        max_tokens=500
+    )
+
+    return response.choices[0].message.content.strip() #
