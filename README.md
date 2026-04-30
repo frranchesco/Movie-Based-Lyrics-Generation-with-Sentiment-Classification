@@ -31,3 +31,6 @@ Ensure you have a valid OpenAI API Key.
 Add your API key to the OPENAI_API_KEY variable in logic.py.
 
 Run the application: streamlit run interface.py.
+
+Presentation link: https://drive.google.com/file/d/1u_-cOMJQmVnoEPTXtqpqSbkuj1h-aEVS/view?usp=sharing
+
